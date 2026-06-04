@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Каталог жидкостей и картриджей для вейпинга - VAPEBYVAPE.STORE">
+    <meta name="keywords" content="вейп, жидкость, картридж, каталог">
+    <meta name="theme-color" content="#0B0B12">
+    <title>Каталог - VAPEBYVAPE.STORE</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="navbar"></div>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Главная</a>
+                <span> / </span>
+                <span>Каталог</span>
+            </div>
+
+            <h1 class="page-title">Каталог товаров</h1>
+
+            <div class="catalog-wrapper">
+                <!-- Filters Sidebar -->
+                <aside class="filters-sidebar">
+                    <h3 class="filter-title">Фильтры</h3>
+
+                    <!-- Search -->
+                    <div class="filter-group">
+                        <label class="filter-label">Поиск</label>
+                        <input 
+                            type="text" 
+                            id="searchInput" 
+                            class="filter-input" 
+                            placeholder="Введите название..."
+                        >
+                    </div>
+
+                    <!-- Category Filter -->
+                    <div class="filter-group">
+                        <label class="filter-label">Категория</label>
+                        <div id="categoryFilters" class="filter-options">
+                            <!-- Loaded via JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Manufacturer Filter -->
+                    <div class="filter-group">
+                        <label class="filter-label">Производитель</label>
+                        <div id="manufacturerFilters" class="filter-options">
+                            <!-- Loaded via JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Taste Filter -->
+                    <div class="filter-group">
+                        <label class="filter-label">Вкус</label>
+                        <div id="tasteFilters" class="filter-options">
+                            <!-- Loaded via JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Volume Filter -->
+                    <div class="filter-group">
+                        <label class="filter-label">Объем</label>
+                        <div id="volumeFilters" class="filter-options">
+                            <!-- Loaded via JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Price Filter -->
+                    <div class="filter-group">
+                        <label class="filter-label">Цена</label>
+                        <div class="price-range">
+                            <input 
+                                type="range" 
+                                id="priceMin" 
+                                min="0" 
+                                max="5000" 
+                                value="0" 
+                                class="price-slider"
+                            >
+                            <input 
+                                type="range" 
+                                id="priceMax" 
+                                min="0" 
+                                max="5000" 
+                                value="5000" 
+                                class="price-slider"
+                            >
+                            <div class="price-display">
+                                <span id="priceMinDisplay">0</span> - <span id="priceMaxDisplay">5000</span> ₽
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Availability Filter -->
+                    <div class="filter-group">
+                        <label class="filter-label">Наличие</label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="inStockFilter" class="filter-checkbox">
+                            <span>Только в наличии</span>
+                        </label>
+                    </div>
+
+                    <button id="clearFilters" class="btn btn-secondary btn-full">Очистить фильтры</button>
+                </aside>
+
+                <!-- Products Grid -->
+                <div class="catalog-content">
+                    <div class="catalog-header">
+                        <div class="results-info">
+                            <span id="resultsCount">Загрузка...</span>
+                        </div>
+                        <select id="sortSelect" class="sort-select">
+                            <option value="popular">По популярности</option>
+                            <option value="new">Новые</option>
+                            <option value="price-asc">Цена: по возрастанию</option>
+                            <option value="price-desc">Цена: по убыванию</option>
+                            <option value="rating">По рейтингу</option>
+                        </select>
+                    </div>
+
+                    <div id="productsContainer" class="products-grid">
+                        <!-- Loaded via JavaScript -->
+                    </div>
+
+                    <div id="noProducts" class="no-products" style="display: none;">
+                        <p>Товары не найдены по выбранным фильтрам</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer"></div>
+    <div id="cart-notification"></div>
+
+    <script src="js/app.js"></script>
+    <script src="js/catalog.js"></script>
+</body>
+</html>

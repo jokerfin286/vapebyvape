@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Избранные товары - VAPEBYVAPE.STORE">
+    <meta name="theme-color" content="#0B0B12">
+    <title>Избранное - VAPEBYVAPE.STORE</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="navbar"></div>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Главная</a>
+                <span> / </span>
+                <span>Избранное</span>
+            </div>
+
+            <h1 class="page-title">Избранные товары</h1>
+
+            <div id="favoritesContainer" class="products-grid">
+                <!-- Loaded via JavaScript -->
+            </div>
+
+            <div id="emptyFavorites" class="empty-state" style="display: none;">
+                <p>Вы еще не добавили товары в избранное</p>
+                <a href="catalog.html" class="btn btn-gradient">Перейти в каталог</a>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer"></div>
+    <div id="cart-notification"></div>
+
+    <script src="js/app.js"></script>
+    <script src="js/product.js"></script>
+</body>
+</html>

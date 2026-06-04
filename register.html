@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Регистрация аккаунта - VAPEBYVAPE.STORE">
+    <meta name="theme-color" content="#0B0B12">
+    <title>Регистрация - VAPEBYVAPE.STORE</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="navbar"></div>
+
+    <main class="main-content">
+        <div class="container auth-container">
+            <div class="auth-card">
+                <h1 class="auth-title">Регистрация</h1>
+                
+                <form id="registerForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="firstName" class="form-label">Имя</label>
+                        <input 
+                            type="text" 
+                            id="firstName" 
+                            name="firstName" 
+                            class="form-input" 
+                            placeholder="Иван"
+                            required
+                        >
+                        <span class="form-error" id="firstNameError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            class="form-input" 
+                            placeholder="you@example.com"
+                            required
+                        >
+                        <span class="form-error" id="emailError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dateOfBirth" class="form-label">Дата рождения</label>
+                        <input 
+                            type="date" 
+                            id="dateOfBirth" 
+                            name="dateOfBirth" 
+                            class="form-input"
+                            required
+                        >
+                        <span class="form-error" id="dobError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Номер телефона</label>
+                        <div style="display: flex; gap: 0.5rem; align-items: center;">
+                            <span style="color: var(--color-text-secondary); font-weight: 500;">+375</span>
+                            <input 
+                                type="tel" 
+                                id="phone" 
+                                name="phone" 
+                                class="form-input" 
+                                placeholder="291234567"
+                                style="flex: 1;"
+                                required
+                            >
+                        </div>
+                        <span class="form-error" id="phoneError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="form-label">Пароль</label>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            class="form-input" 
+                            placeholder="••••••••"
+                            required
+                        >
+                        <span class="form-error" id="passwordError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword" class="form-label">Подтвердить пароль</label>
+                        <input 
+                            type="password" 
+                            id="confirmPassword" 
+                            name="confirmPassword" 
+                            class="form-input" 
+                            placeholder="••••••••"
+                            required
+                        >
+                        <span class="form-error" id="confirmPasswordError"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-gradient btn-full">Создать аккаунт</button>
+                </form>
+
+                <p class="auth-footer">
+                    Уже есть аккаунт? <a href="login.html">Войти</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer"></div>
+    <div id="cart-notification"></div>
+
+    <script src="js/app.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Контакты VAPEBYVAPE.STORE">
+    <meta name="theme-color" content="#0B0B12">
+    <title>Контакты - VAPEBYVAPE.STORE</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="navbar"></div>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Главная</a>
+                <span> / </span>
+                <span>Контакты</span>
+            </div>
+
+            <h1 class="page-title">Контакты</h1>
+
+            <div class="contacts-section">
+                <div class="contact-info-large">
+                    <div class="contact-item-large">
+                        <h3>Телефон</h3>
+                        <a href="tel:+79999999999" class="contact-link">+7 (999) 999-99-99</a>
+                    </div>
+                    <div class="contact-item-large">
+                        <h3>Email</h3>
+                        <a href="mailto:info@vapebyvape.store" class="contact-link">info@vapebyvape.store</a>
+                    </div>
+                    <div class="contact-item-large">
+                        <h3>Telegram</h3>
+                        <a href="https://t.me/vapebyvape" target="_blank" class="contact-link">@vapebyvape</a>
+                    </div>
+                    <div class="contact-item-large">
+                        <h3>Режим работы</h3>
+                        <p class="contact-text">Пн-Пт: 10:00 - 20:00<br>Сб-Вс: 12:00 - 18:00</p>
+                    </div>
+                </div>
+
+                <form id="contactForm" class="contact-form">
+                    <h2 class="form-title">Свяжитесь с нами</h2>
+
+                    <div class="form-group">
+                        <label for="contactName" class="form-label">Имя</label>
+                        <input 
+                            type="text" 
+                            id="contactName" 
+                            class="form-input" 
+                            placeholder="Ваше имя"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactEmail" class="form-label">Email</label>
+                        <input 
+                            type="email" 
+                            id="contactEmail" 
+                            class="form-input" 
+                            placeholder="you@example.com"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactPhone" class="form-label">Телефон</label>
+                        <input 
+                            type="tel" 
+                            id="contactPhone" 
+                            class="form-input" 
+                            placeholder="+7 (999) 999-99-99"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactSubject" class="form-label">Тема</label>
+                        <input 
+                            type="text" 
+                            id="contactSubject" 
+                            class="form-input" 
+                            placeholder="Тема обращения"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactMessage" class="form-label">Сообщение</label>
+                        <textarea 
+                            id="contactMessage" 
+                            class="form-textarea" 
+                            placeholder="Ваше сообщение..."
+                            rows="6"
+                            required
+                        ></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-gradient btn-full">Отправить</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer"></div>
+    <div id="cart-notification"></div>
+
+    <script src="js/app.js"></script>
+    <script>
+        // Contact Form Handler
+        document.addEventListener('DOMContentLoaded', () => {
+            const contactForm = document.getElementById('contactForm');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    const name = document.getElementById('contactName').value.trim();
+                    const email = document.getElementById('contactEmail').value.trim();
+                    const phone = document.getElementById('contactPhone').value.trim();
+                    const subject = document.getElementById('contactSubject').value.trim();
+                    const message = document.getElementById('contactMessage').value.trim();
+                    
+                    // Basic validation
+                    if (!name || !email || !subject || !message) {
+                        UI.showNotification('Заполните все обязательные поля', 'error');
+                        return;
+                    }
+                    
+                    // Email validation
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(email)) {
+                        UI.showNotification('Введите корректный email', 'error');
+                        return;
+                    }
+                    
+                    // Create contact inquiry
+                    const inquiries = JSON.parse(localStorage.getItem('contact_inquiries')) || [];
+                    
+                    const inquiry = {
+                        id: Date.now(),
+                        name: name,
+                        email: email,
+                        phone: phone || 'не указан',
+                        subject: subject,
+                        message: message,
+                        date: new Date().toISOString().split('T')[0],
+                        status: 'new'
+                    };
+                    
+                    inquiries.push(inquiry);
+                    localStorage.setItem('contact_inquiries', JSON.stringify(inquiries));
+                    
+                    // Show success message
+                    UI.showNotification('Ваше сообщение отправлено! Мы свяжемся с вами в ближайшее время.', 'success');
+                    
+                    // Reset form
+                    contactForm.reset();
+                    
+                    // Optional: Send to Telegram (if configured)
+                    const telegramToken = localStorage.getItem('telegram_token');
+                    const telegramChatId = localStorage.getItem('telegram_chat_id');
+                    
+                    if (telegramToken && telegramChatId) {
+                        const telegramMessage = `
+📧 Новое обращение из формы контактов
+
+Имя: ${name}
+Email: ${email}
+Телефон: ${phone || 'не указан'}
+Тема: ${subject}
+
+Сообщение:
+${message}
+                        `;
+                        
+                        fetch(`https://api.telegram.org/bot${telegramToken}/sendMessage`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                chat_id: telegramChatId,
+                                text: telegramMessage.trim()
+                            })
+                        }).catch(() => {
+                            // Silently fail if Telegram is not configured
+                        });
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+Allow: /catalog.html
+Allow: /product.html
+Allow: /index.html
+Allow: /contacts.html
+Disallow: /admin/
+Disallow: /admin/*
+Disallow: /js/
+Disallow: /css/
+
+Sitemap: https://vapebyvape.store/sitemap.xml
+
+# Respect crawl-delay
+Crawl-delay: 1

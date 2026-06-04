@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Профиль пользователя - VAPEBYVAPE.STORE">
+    <meta name="theme-color" content="#0B0B12">
+    <title>Профиль - VAPEBYVAPE.STORE</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="navbar"></div>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Главная</a>
+                <span> / </span>
+                <span>Профиль</span>
+            </div>
+
+            <div class="profile-wrapper">
+                <aside class="profile-sidebar">
+                    <nav class="profile-menu">
+                        <button class="profile-menu-item active" data-tab="profile">
+                            Профиль
+                        </button>
+                        <button class="profile-menu-item" data-tab="orders">
+                            Мои заказы
+                        </button>
+                        <button class="profile-menu-item" data-tab="favorites">
+                            Избранное
+                        </button>
+                        <button class="profile-menu-item" data-tab="settings">
+                            Настройки
+                        </button>
+                        <button class="profile-menu-item logout-btn" id="logoutBtn">
+                            Выход
+                        </button>
+                    </nav>
+                </aside>
+
+                <div class="profile-content">
+                    <!-- Profile Tab -->
+                    <div class="profile-tab active" data-tab="profile">
+                        <h2 class="tab-title">Мой профиль</h2>
+                        <div class="profile-info">
+                            <div class="info-item">
+                                <span class="info-label">Имя:</span>
+                                <span id="profileName">Загрузка...</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Email:</span>
+                                <span id="profileEmail">Загрузка...</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Дата рождения:</span>
+                                <span id="profileDob">Загрузка...</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Дата регистрации:</span>
+                                <span id="profileRegDate">Загрузка...</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Orders Tab -->
+                    <div class="profile-tab" data-tab="orders">
+                        <h2 class="tab-title">Мои заказы</h2>
+                        <div id="ordersContainer">
+                            <!-- Loaded via JavaScript -->
+                        </div>
+                        <div id="noOrders" class="empty-state" style="display: none;">
+                            <p>У вас еще нет заказов</p>
+                            <a href="catalog.html" class="btn btn-gradient">Перейти в каталог</a>
+                        </div>
+                    </div>
+
+                    <!-- Favorites Tab -->
+                    <div class="profile-tab" data-tab="favorites">
+                        <h2 class="tab-title">Избранное</h2>
+                        <div id="profileFavorites" class="products-grid">
+                            <!-- Loaded via JavaScript -->
+                        </div>
+                        <div id="noFavorites" class="empty-state" style="display: none;">
+                            <p>Вы еще не добавили товары в избранное</p>
+                            <a href="catalog.html" class="btn btn-gradient">Перейти в каталог</a>
+                        </div>
+                    </div>
+
+                    <!-- Settings Tab -->
+                    <div class="profile-tab" data-tab="settings">
+                        <h2 class="tab-title">Настройки</h2>
+                        <form id="settingsForm" class="settings-form">
+                            <div class="form-group">
+                                <label for="settingName" class="form-label">Имя</label>
+                                <input 
+                                    type="text" 
+                                    id="settingName" 
+                                    class="form-input"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="newPassword" class="form-label">Новый пароль (оставьте пусто, чтобы не менять)</label>
+                                <input 
+                                    type="password" 
+                                    id="newPassword" 
+                                    class="form-input"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="confirmNewPassword" class="form-label">Подтвердить новый пароль</label>
+                                <input 
+                                    type="password" 
+                                    id="confirmNewPassword" 
+                                    class="form-input"
+                                >
+                            </div>
+
+                            <button type="submit" class="btn btn-gradient">Сохранить изменения</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer"></div>
+    <div id="cart-notification"></div>
+
+    <script src="js/app.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html>

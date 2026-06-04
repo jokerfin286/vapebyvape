@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Вход в админ-панель - VAPEBYVAPE.STORE">
+    <meta name="theme-color" content="#0B0B12">
+    <title>Вход в админ - VAPEBYVAPE.STORE</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="navbar"></div>
+
+    <main class="main-content">
+        <div class="container auth-container">
+            <div class="auth-card">
+                <h1 class="auth-title">Администратор</h1>
+                <p style="text-align: center; color: var(--color-text-secondary); margin-bottom: 2rem;">Вход в панель управления</p>
+                
+                <div style="background: rgba(77, 124, 255, 0.1); border: 1px solid rgba(77, 124, 255, 0.2); border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem;">
+                    <p style="color: var(--color-text); font-weight: 600; margin-bottom: 0.5rem;">Учетные данные администратора:</p>
+                    <p style="color: var(--color-text-secondary); font-size: 0.9rem; margin-bottom: 0.25rem;">Пароль: <strong style="color: var(--color-primary);">admin123</strong></p>
+                </div>
+                
+                <form id="adminLoginForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="adminPassword" class="form-label">Пароль администратора</label>
+                        <input 
+                            type="password" 
+                            id="adminPassword" 
+                            name="adminPassword" 
+                            class="form-input" 
+                            placeholder="••••••••"
+                            required
+                        >
+                        <span class="form-error" id="passwordError"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-gradient btn-full">Войти в админ-панель</button>
+                </form>
+
+                <p class="auth-footer">
+                    <a href="index.html">Вернуться на главную</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer"></div>
+    <div id="cart-notification"></div>
+
+    <script src="js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('adminLoginForm');
+            const adminPassword = 'admin123'; // Default password
+            
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    const password = document.getElementById('adminPassword').value;
+                    const errorEl = document.getElementById('passwordError');
+                    
+                    if (password === adminPassword) {
+                        localStorage.setItem('admin_logged_in', 'true');
+                        localStorage.setItem('admin_login_time', new Date().getTime());
+                        UI.showNotification('Вход выполнен успешно!');
+                        setTimeout(() => {
+                            window.location.href = 'admin/index.html';
+                        }, 1000);
+                    } else {
+                        errorEl.textContent = 'Неверный пароль';
+                        errorEl.style.display = 'block';
+                        document.getElementById('adminPassword').value = '';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
