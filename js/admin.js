@@ -398,6 +398,14 @@ let admin;
 document.addEventListener('DOMContentLoaded', () => {
     admin = new AdminManager();
     
+    // Handle settings form submission
+    const settingsForm = document.getElementById('settingsForm');
+    if (settingsForm) {
+        settingsForm.addEventListener('submit', (e) => {
+            admin.handleSettingsSubmit(e);
+        });
+    }
+    
     // Handle logout
     const logoutBtn = document.getElementById('adminLogout');
     if (logoutBtn) {
@@ -409,5 +417,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.location.href = '../admin-login.html';
             }
         });
+    }
+    
+    // Load saved Telegram settings
+    const savedToken = localStorage.getItem('telegram_token');
+    const savedChatId = localStorage.getItem('telegram_chat_id');
+    if (savedToken) {
+        const tokenInput = document.getElementById('telegramToken');
+        if (tokenInput) tokenInput.value = savedToken;
+    }
+    if (savedChatId) {
+        const chatIdInput = document.getElementById('telegramChatId');
+        if (chatIdInput) chatIdInput.value = savedChatId;
     }
 });
